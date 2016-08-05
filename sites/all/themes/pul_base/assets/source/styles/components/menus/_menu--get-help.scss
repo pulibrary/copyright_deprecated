@@ -1,0 +1,63 @@
+.pane-menu-menu-get-help-menu {
+  .menu {
+    list-style: none;
+
+    .leaf {
+      display: block;
+      height: 26px;
+      list-style: none;
+      margin-bottom: 5px;
+
+      a {
+        .libraryh3lp .button--libraryh3lp {
+          font-size: 0.875rem;
+        }
+
+        &:hover {
+          text-decoration: none;
+
+          &::before {
+            color: $orange;
+          }
+        }
+      }
+
+      [class^="ico-"]::before,
+      [class*=" ico-"]::before {
+        display: inline-block;
+        font-family: "pul-icons";
+        font-size: 1.2em;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        line-height: 1;
+        margin-left: 0;
+        margin-right: 0.5em;
+        speak: none;
+        text-transform: none;
+        vertical-align: middle;
+      }
+
+      .ico-chat::before {
+        content: "\f728";
+
+      }
+
+      .ico-mail::before {
+        content: "\f813";
+      }
+
+      .ico-calendar::before {
+        content: "\f82c";
+      }
+
+      .ico-phone::before {
+        content: "\f6a4";
+      }
+
+      .ico-book::before {
+        content: "\f04a";
+      }
+    }
+  }
+}
