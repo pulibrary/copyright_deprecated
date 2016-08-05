@@ -1,0 +1,43 @@
+//alumni news
+
+.alumni-landing-page .view-id-library_news {
+  .views-row-1 {
+    @include full;
+    @include breakpoint($tab) {
+      @include span(4 of 12);
+      clear: none;
+      margin-left: 0;
+    }
+  }
+
+  .views-row-2 {
+    @include full;
+
+    @include breakpoint($tab) {
+      @include span(4 of 12);
+      clear: none;
+    }
+  }
+
+  .views-row-3 {
+    @include full;
+
+    @include breakpoint($tab) {
+      @include span(4 of 12);
+      clear: none;
+      margin-right: 0;
+    }
+  }
+
+  .views-field-title {
+    clear: both;
+  }
+
+  .field--name-field-news-featured-graphic img {
+    margin-bottom: 1em;
+  }
+
+  .field--name-field-news-article-snippet {
+    clear: both;
+  }
+}
