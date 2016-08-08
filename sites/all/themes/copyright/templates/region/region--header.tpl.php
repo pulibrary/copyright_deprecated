@@ -31,7 +31,7 @@
 ?>
 <?php if ($content): ?>
   <div<?php print $attributes; ?>>
-    <h2 class="site-brand"><a href="/" title="<?php print t('Copyright - Home'); ?>"><img src="/sites/all/themes/pul_base/assets/public/images/copyright-logo.png" alt="<?php print t('Home'); ?>" /><span class="site-name">Copyright</span></a></h2>
+    <h2 class="site-brand"><a href="/" title="<?php print t('Copyright - Home'); ?>"><img src="/sites/all/themes/copyright/assets/public/images/copyright-logo.png" alt="<?php print t('Home'); ?>" /><span class="site-name">Copyright</span></a></h2>
     <?php print $content; ?>
   </div>
 <?php endif; ?>

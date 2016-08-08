@@ -75,9 +75,7 @@
     <a href="#main-content" class="skip2main"><?php print t('Skip to main content'); ?></a>
     <div class="wrapper wrapper--branding">
       <section class="l-region l-region--branding">
-        <?php if ($logo): ?>
-          <h3><a href="http://www.princeton.edu" title="<?php print t('Princeton University - Home'); ?>"  class="site-logo"><img src="/sites/all/themes/pul_base/assets/public/images/pu-logo-vert.png" alt="<?php print t('Home'); ?>" /><span class="site-name"><?php print $site_name; ?></span></a></h3>
-        <?php endif; ?>
+        <h3><a href="http://www.princeton.edu" title="<?php print t('Princeton University - Home'); ?>"  class="site-logo"><img src="/sites/all/themes/copyright/assets/public/images/pu-logo-vert.png" alt="<?php print t('Home'); ?>" /><span class="site-name"><?php print $site_name; ?></span></a></h3>
         <?php print render($page['branding']); ?>
       </section>
     </div>

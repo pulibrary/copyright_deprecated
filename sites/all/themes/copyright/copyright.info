@@ -27,3 +27,9 @@ regions[content] = Content
 regions[sidebar_first] = First Sidebar
 regions[sidebar_second] = Second Sidebar
 regions[footer] = Footer
+
+; ========================================
+; Settings
+; ========================================
+settings[toggle_logo] = 0
+settings[favicon_path] = favicon.ico
