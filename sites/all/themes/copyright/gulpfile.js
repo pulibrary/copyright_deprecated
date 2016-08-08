@@ -1,6 +1,9 @@
 // Load in gulp
 var gulp = require('gulp');
 
+// set permissions
+var chmod = require('gulp-chmod');
+
 // Load in config JSON
 var config = require('./build.config.json');
 
@@ -70,6 +73,7 @@ gulp.task('styles', function(){
     .pipe(p.cssmin())
     .pipe(p.rename({suffix: '.min'}))
     .pipe(p.sourcemaps.write('.'))
+    .pipe(chmod(644))
     .pipe(gulp.dest(config.styles.dest))
     .pipe(reload({stream:true}));
 });
@@ -99,16 +103,19 @@ gulp.task('lint:scss', function() {
 gulp.task('scripts', function(){
   gulp.src(config.scripts.files)
     .pipe(p.sourcemaps.init())
-    .pipe(p.concat('copyright.scripts.js'))
+    .pipe(p.concat('rbsc.scripts.js'))
     .pipe(p.uglify({preserveComments: 'some'}))
-    .pipe(p.rename('copyright.scripts.min.js'))
+    .pipe(p.rename('rbsc.scripts.min.js'))
     .pipe(p.sourcemaps.write('.'))
+    .pipe(chmod(644))
     .pipe(gulp.dest(config.scripts.dest))
     .pipe(reload({stream:true}));
   gulp.src(config.scripts.vendor)
+    .pipe(chmod(644))
     .pipe(gulp.dest(config.scripts.dest))
     .pipe(reload({stream:true}));
 });
+
 
 /**
  * Gulp task: modernizr
@@ -128,6 +135,7 @@ gulp.task('scripts', function(){
           "svg"
         ],
      }))
+     .pipe(chmod(644))
      .pipe(gulp.dest(config.scripts.base))
  });
 
@@ -137,6 +145,7 @@ gulp.task('scripts', function(){
   */
 gulp.task('fonts', function(){
   gulp.src(config.fonts.files)
+    .pipe(chmod(644))
     .pipe(gulp.dest(config.fonts.dest))
     .pipe(reload({stream:true}));
 });
@@ -152,6 +161,7 @@ gulp.task('images', function(){
       optimizationLevel: 5,
       interlaced: true
     }))
+    .pipe(chmod(644))
     .pipe(gulp.dest(config.images.dest))
     .pipe(reload({stream:true}));
 });
@@ -208,7 +218,7 @@ gulp.task('styleguide', function(){
  * Clear all caches for drupal 7 sites
  */
 gulp.task('clearcache', function() {
-  return shell.task([
+  return p.shell.task([
    'drush cc all'
   ]);
 });
@@ -227,7 +237,10 @@ gulp.task('reload', ['clearcache'], function () {
  * Clear cache when Drupal related files are changed
  */
 gulp.task('watch4drupal', function () {
-  gulp.watch(['assets/source/styles/*.scss', 'assets/source/styles/**/*.scss'], ['styles', 'lint:scss']);
+  gulp.watch(config.styles.files, ['styles', 'lint:scss']);
+  gulp.watch(config.scripts.files, ['scripts']);
+  gulp.watch(config.images.files, ['images']);
+  gulp.watch(config.fonts.files, ['fonts']);
   gulp.watch('**/*.{php,inc,info}',['reload']);
 });
 
@@ -237,7 +250,7 @@ gulp.task('watch4drupal', function () {
  gulp.task('browser-sync4drupal', ['styles'], function() {
  browserSync.init({
    // Change as required
-   proxy: "library-local.princeton.edu",
+   proxy: "rbsc-local.princeton.edu",
    socket: {
        // For local development only use the default Browsersync local URL.
        domain: 'localhost:3000'
@@ -249,7 +262,9 @@ gulp.task('watch4drupal', function () {
 });
 
 /**
- * Compile all static assets
+ * Gulp task: default
+ * Builds Pattern Lab, triggers BrowserSync, builds all assets, and starts the
+ * watcher
  */
 gulp.task('deploy', function(callback){
   runSequence(
@@ -260,11 +275,6 @@ gulp.task('deploy', function(callback){
     callback);
 });
 
-/**
- * Gulp task: default
- * Builds Pattern Lab, triggers BrowserSync, builds all assets, and starts the
- * watcher
- */
 gulp.task('default', function(callback){
   runSequence(
     'clean',
