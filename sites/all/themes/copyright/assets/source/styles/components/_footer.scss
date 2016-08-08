@@ -1,0 +1,67 @@
+@import "breakpoint";
+@import "../../../../pul_base/assets/source/styles/utils/mixins";
+@import "../../../../pul_base/assets/source/styles/utils/variables";
+
+.l-region--footer {
+  height: 60px;
+}
+
+.pul-logo {
+  display: block;
+  position: relative;
+
+  @include breakpoint($bp-large) {
+    display: inline-block;
+    float: left;
+    height: 60px;
+  }
+
+
+  a {
+    background-image: url("/sites/all/themes/copyright/assets/public/images/pul-logo.svg");
+    background-size: contain;
+    display: inline-block;
+    height: 17px;
+    line-height: 11px;
+    margin: 0 0 1em;
+    width: 300px;
+
+    @include breakpoint($bp-large) {
+      @include vertical-align;
+
+      height: 22px;
+      margin: 0;
+      width: 390px;
+    }
+
+
+    img {
+      display: none;
+    }
+  }
+}
+
+.l-footer {
+  margin: 0 auto;
+  padding: 1em 1em 0;
+
+  @include breakpoint($bp-large) {
+    padding: 0;
+  }
+
+
+  .footer--copyright {
+    @include vertical-align;
+
+    display: inline-block;
+    font-size: 0.8em;
+    margin: 0;
+    position: relative;
+
+    @include breakpoint($bp-large) {
+      float: right;
+      text-align: right;
+      width: 50%;
+    }
+  }
+}

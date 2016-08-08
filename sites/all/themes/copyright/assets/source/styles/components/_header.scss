@@ -1,0 +1,89 @@
+@import "breakpoint";
+@import "../../../../pul_base/assets/source/styles/utils/mixins";
+@import "../../../../pul_base/assets/source/styles/utils/variables";
+
+.wrapper--navigation {
+  background: $gray-lightest;
+  background-image: url("/sites/all/themes/copyright/assets/public/images/banner.png") repeat center;
+  background-size: contain;
+  min-height: 120px;
+}
+
+.l-region--header {
+  height: 120px;
+
+  .site-brand {
+    height: 50px;
+    margin: 0;
+    padding: 0.3em;
+    position: absolute;
+    width: 100%;
+
+    @include breakpoint($bp-large) {
+      height: 120px;
+      padding: 0;
+      width: 50%;
+    }
+
+
+    a {
+      background: url("/sites/all/themes/copyright/assets/public/images/copyright-logo.svg") center center no-repeat;
+      background-size: contain;
+      display: block;
+      height: 50px;
+      padding-top: 10px;
+
+      @include breakpoint($bp-large) {
+        background: url("/sites/all/themes/copyright/assets/public/images/copyright-logo.svg") left center no-repeat;
+        background-size: contain;
+        height: 120px;
+        padding: 0;
+      }
+    }
+  }
+
+  .site-name {
+    display: none;
+  }
+}
+
+.block--search {
+  @include vertical-align;
+
+  margin: auto;
+  padding-top: 3em;
+  width: 80%;
+
+  @include breakpoint($bp-large) {
+    float: right;
+    margin-right: 0;
+    padding: 0;
+    width: 31.91489%;
+  }
+
+
+  .search-block-form {
+    position: relative;
+
+    input {
+      margin: 0;
+    }
+  }
+
+  .form-actions {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    input {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      height: 36px;
+      padding: 0 10px;
+    }
+  }
+}
+
+.front h1 {
+  @include visually-hidden;
+}
