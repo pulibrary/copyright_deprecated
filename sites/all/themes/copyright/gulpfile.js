@@ -103,9 +103,9 @@ gulp.task('lint:scss', function() {
 gulp.task('scripts', function(){
   gulp.src(config.scripts.files)
     .pipe(p.sourcemaps.init())
-    .pipe(p.concat('rbsc.scripts.js'))
+    .pipe(p.concat('copyright.scripts.js'))
     .pipe(p.uglify({preserveComments: 'some'}))
-    .pipe(p.rename('rbsc.scripts.min.js'))
+    .pipe(p.rename('copyright.scripts.min.js'))
     .pipe(p.sourcemaps.write('.'))
     .pipe(chmod(644))
     .pipe(gulp.dest(config.scripts.dest))
@@ -250,7 +250,7 @@ gulp.task('watch4drupal', function () {
  gulp.task('browser-sync4drupal', ['styles'], function() {
  browserSync.init({
    // Change as required
-   proxy: "rbsc-local.princeton.edu",
+   proxy: "copyright-local.princeton.edu",
    socket: {
        // For local development only use the default Browsersync local URL.
        domain: 'localhost:3000'
