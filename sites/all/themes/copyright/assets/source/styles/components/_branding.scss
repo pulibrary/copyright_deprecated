@@ -1,0 +1,83 @@
+@import "breakpoint";
+@import "../../../../pul_base/assets/source/styles/utils/mixins";
+@import "../../../../pul_base/assets/source/styles/utils/variables";
+
+// branding
+.wrapper--branding {
+  background-color: $gray-darkest;
+  border-top: 5px solid $orange;
+  min-height: 30px;
+
+  .site-name {
+    display: none;
+  }
+}
+
+.l-region--branding {
+  h3 {
+    height: 30px;
+    margin: 0;
+    position: relative;
+  }
+
+  .homepage-tab-form-message {
+    display: none;
+  }
+}
+
+// non-SVG logo
+.site-logo {
+  clear: both;
+  height: 30px;
+  line-height: 21px;
+  margin-left: -0.7em;
+
+  &::before {
+    content: " ";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  img {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0 1em;
+    vertical-align: middle;
+
+    @include breakpoint($desk) {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+// SVG logo
+.svg {
+  .site-logo img,
+  .site-brand img {
+    display: none;
+  }
+
+  .site-logo {
+    @include vertical-align;
+
+    background: url("/sites/all/themes/copyright/assets/public/images/pu-logo-vert.svg") center center no-repeat;
+    background-size: contain;
+    display: block;
+    margin-left: 0;
+    max-height: 18px;
+
+    @include breakpoint($tab) {
+      background: url("/sites/all/themes/copyright/assets/public/images/pu-logo-vert.svg") center left no-repeat;
+      background-size: contain;
+
+      // max-height: 25px;
+    }
+
+
+    @include breakpoint($bp-large) {
+      max-height: 18px;
+    }
+  }
+}

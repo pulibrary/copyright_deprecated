@@ -8,13 +8,12 @@ core = 7.x
 ; ========================================
 ; Stylesheets
 ; ========================================
-stylesheets[all][] = css/copyright.reset.css
-stylesheets[all][] = css/copyright.styles.css
+stylesheets[all][] = assets/public/styles/copyright.styles.min.css
 
 ; ========================================
 ; Scripts
 ; ========================================
-scripts[] = js/copyright.behaviors.js
+scripts[] = assets/public/scripts/copyright.scripts.min.js
 
 ; ========================================
 ; Regions

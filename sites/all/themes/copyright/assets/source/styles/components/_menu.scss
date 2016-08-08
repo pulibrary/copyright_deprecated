@@ -1,0 +1,12 @@
+@import "breakpoint";
+@import "../../../../pul_base/assets/source/styles/utils/mixins";
+@import "../../../../pul_base/assets/source/styles/utils/variables";
+
+.section-home-page .pane-system-main-menu .first a {
+  background: $blue-dark;
+  color: $white;
+}
+
+.three_six_three_stacked-region--first ul.menu>li>ul>li>a {
+  padding-left: 2em;
+}
