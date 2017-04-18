@@ -66,6 +66,7 @@
     position: relative;
 
     input {
+      height: 36px;
       margin: 0;
     }
   }
@@ -78,6 +79,7 @@
     input {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
+      font-family: $font-secondary;
       height: 36px;
       padding: 0 10px;
     }
