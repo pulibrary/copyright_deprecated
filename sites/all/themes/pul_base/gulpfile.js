@@ -1,6 +1,9 @@
 // Load in gulp
 var gulp = require('gulp');
 
+// set permissions
+var chmod = require('gulp-chmod');
+
 // Load in config JSON
 var config = require('./build.config.json');
 
@@ -70,6 +73,7 @@ gulp.task('styles', function(){
     .pipe(p.cssmin())
     .pipe(p.rename({suffix: '.min'}))
     .pipe(p.sourcemaps.write('.'))
+    .pipe(chmod(644))
     .pipe(gulp.dest(config.styles.dest))
     .pipe(reload({stream:true}));
 });
@@ -103,9 +107,11 @@ gulp.task('scripts', function(){
     .pipe(p.uglify({preserveComments: 'some'}))
     .pipe(p.rename('pul-base.scripts.min.js'))
     .pipe(p.sourcemaps.write('.'))
+    .pipe(chmod(644))
     .pipe(gulp.dest(config.scripts.dest))
     .pipe(reload({stream:true}));
   gulp.src(config.scripts.vendor)
+    .pipe(chmod(644))
     .pipe(gulp.dest(config.scripts.dest))
     .pipe(reload({stream:true}));
 });
@@ -128,6 +134,7 @@ gulp.task('scripts', function(){
           "svg"
         ],
      }))
+     .pipe(chmod(644))
      .pipe(gulp.dest(config.scripts.base))
  });
 
@@ -137,6 +144,7 @@ gulp.task('scripts', function(){
   */
 gulp.task('fonts', function(){
   gulp.src(config.fonts.files)
+    .pipe(chmod(644))
     .pipe(gulp.dest(config.fonts.dest))
     .pipe(reload({stream:true}));
 });
@@ -152,6 +160,7 @@ gulp.task('images', function(){
       optimizationLevel: 5,
       interlaced: true
     }))
+    .pipe(chmod(644))
     .pipe(gulp.dest(config.images.dest))
     .pipe(reload({stream:true}));
 });
@@ -208,7 +217,7 @@ gulp.task('styleguide', function(){
  * Clear all caches for drupal 7 sites
  */
 gulp.task('clearcache', function() {
-  return shell.task([
+  return p.shell.task([
    'drush cc all'
   ]);
 });
