@@ -42,7 +42,7 @@
 }
 
 .l-footer {
-  margin: 0 auto;
+  margin: 1em auto 0;
   padding: 1em 1em 0;
 
   @include breakpoint($bp-large) {
